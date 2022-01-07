@@ -1,81 +1,81 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 /// <summary>
-/// ´ó×ªÅÌ
+/// å¤§è½¬ç›˜
 /// </summary>
 public class TurnTable : MonoBehaviour
 {
-    //³õÊ¼Ğı×ªËÙ¶È
+    //åˆå§‹æ—‹è½¬é€Ÿåº¦
     //[Range(100, 500)]
     public float speed = 0;
-    //ËÙ¶È±ä»¯Öµ
+    //é€Ÿåº¦å˜åŒ–å€¼
     public float delta = 0.05f;
 
-    //×ªÅÌÊÇ·ñÔİÍ£
+    //è½¬ç›˜æ˜¯å¦æš‚åœ
     private bool pause = true;
 
-    //·½Ïò
+    //æ–¹å‘
     [Range(-1, 1)]
     public int direction = -1;
 
-    //Ö¡Êı
+    //å¸§æ•°
     public int frame = 30;
-    //Ã¿Ö¡Ö´ĞĞÊ±¼ä
+    //æ¯å¸§æ‰§è¡Œæ—¶é—´
     private float deltaTime = 0f;
 
-    //×ªÅÌ·İÊı
+    //è½¬ç›˜ä»½æ•°
     public int count = 10;
 
-    //·ÖÇøµÄ½Ç¶È
+    //åˆ†åŒºçš„è§’åº¦
     private float partition = 0f;
 
-    //ÉÏÒ»´ÎµÄÑ¡Ïî
+    //ä¸Šä¸€æ¬¡çš„é€‰é¡¹
     private int currentItem = 0;
 
-    //×ª¶¯¹ıµÄ¾àÀë
+    //è½¬åŠ¨è¿‡çš„è·ç¦»
     private float trip = 0f;
 
-    //×ª¶¯µ½ÄÄÒ»Ïî
+    //è½¬åŠ¨åˆ°å“ªä¸€é¡¹
     [Range(0, 10)]
     public int item = 0;
 
-    //×ª¶¯È¦Êı
+    //è½¬åŠ¨åœˆæ•°
     [Range(0, 4)]
     public int circle = 0;
 
-    //¼ÆËã³ö×ß¶àÉÙ¾àÀë
+    //è®¡ç®—å‡ºèµ°å¤šå°‘è·ç¦»
     private float distance;
 
     /// <summary>
-    /// Ğı×ª×ªÅÌ
+    /// æ—‹è½¬è½¬ç›˜
     /// </summary>
-    [ContextMenu("Ğı×ª")]
+    [ContextMenu("æ—‹è½¬")]
     public void Rotate()
     {
         if (pause)
         {
-            //¿ªÊ¼Ğı×ª
+            //å¼€å§‹æ—‹è½¬
             pause = false;
 
-            //ÇåÁã¾àÀë
+            //æ¸…é›¶è·ç¦»
             trip = 0f;
         }
     }
 
     /// <summary>
-    /// ³õÊ¼»¯Êı¾İ
+    /// åˆå§‹åŒ–æ•°æ®
     /// </summary>
     void Start()
     {
-        //Ã¿Ö¡Ê±¼ä
+        //æ¯å¸§æ—¶é—´
         deltaTime = 1f / frame;
-        //·ÖÇø
+        //åˆ†åŒº
         partition = 360f / count;
 
-        //³õÊ¼»¯Î»ÖÃ
+        //åˆå§‹åŒ–ä½ç½®
         transform.localEulerAngles = Vector3.zero;
 
-        //µ±Ç°Ğı×ª
+        //å½“å‰æ—‹è½¬
         currentItem = 0;
 
         Debug.Log("deltaTime: " + deltaTime);
@@ -83,34 +83,34 @@ public class TurnTable : MonoBehaviour
     }
 
     /// <summary>
-    /// ×ª¶¯º¯Êı
+    /// è½¬åŠ¨å‡½æ•°
     /// </summary>
     void Update()
     {
         if (!pause)
         {
-            //¼ÆËã×ß¶à³¤
+            //è®¡ç®—èµ°å¤šé•¿
             float step = speed * deltaTime;
 
-            //ÀÛ¼Æ²½³¤
+            //ç´¯è®¡æ­¥é•¿
             trip += step;
 
             if (distance - trip <= 0)
             {
-                //·ÀÖ¹Ö¸Õë×ß¹ıÍ·
+                //é˜²æ­¢æŒ‡é’ˆèµ°è¿‡å¤´
                 step = distance - trip;
-                //Í£Ö¹×ªÅÌ
+                //åœæ­¢è½¬ç›˜
                 speed = 0;
             }
 
-            //×ª¶¯×ªÅÌ(-1ÎªË³Ê±Õë,1ÎªÄæÊ±Õë)
+            //è½¬åŠ¨è½¬ç›˜(-1ä¸ºé¡ºæ—¶é’ˆ,1ä¸ºé€†æ—¶é’ˆ)
             transform.Rotate(new Vector3(0, 0, direction) * step);
-            //ÈÃ×ª¶¯µÄËÙ¶È»º»º½µµÍ
+            //è®©è½¬åŠ¨çš„é€Ÿåº¦ç¼“ç¼“é™ä½
             speed -= delta;
-            //µ±×ª¶¯µÄËÙ¶ÈÎª0Ê±×ªÅÌÍ£Ö¹×ª¶¯
+            //å½“è½¬åŠ¨çš„é€Ÿåº¦ä¸º0æ—¶è½¬ç›˜åœæ­¢è½¬åŠ¨
             if (speed <= 0)
             {
-                //×ª¶¯Í£Ö¹
+                //è½¬åŠ¨åœæ­¢
                 pause = true;
             }
 
@@ -118,23 +118,23 @@ public class TurnTable : MonoBehaviour
     }
 
     /// <summary>
-    /// ¼ÆËã³õÊ¼ËÙ¶È
+    /// è®¡ç®—åˆå§‹é€Ÿåº¦
     /// </summary>
-    [ContextMenu("¼ÆËã")]
+    [ContextMenu("è®¡ç®—")]
     public void Calc()
     {
-        //¼ÆËã¾àÀë
+        //è®¡ç®—è·ç¦»
         distance = (count - currentItem) * partition + circle * 360 + item * partition;
 
         Debug.Log("distance: " + distance);
 
-        //¼ÇÂ¼Ğı×ªµÄÑ¡Ïî
+        //è®°å½•æ—‹è½¬çš„é€‰é¡¹
         currentItem = item;
 
-        //¼ÆËãËÙ¶È
+        //è®¡ç®—é€Ÿåº¦
         float _speed = 0;
         float _distance = 0;
-        //×î±¿µÄ¼ÆËã
+        //æœ€ç¬¨çš„è®¡ç®—
         while (_distance < distance)
         {
             if (_distance + _speed * deltaTime > distance)

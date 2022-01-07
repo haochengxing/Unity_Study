@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,28 +10,28 @@ public class Curves : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //×Ü¾àÀë
+        //æ€»è·ç¦»
         float distance = 360;
-        //Ö¡Êı
+        //å¸§æ•°
         int frame = 30;
-        //¼ÓËÙ¶È
+        //åŠ é€Ÿåº¦
         float [] accelerate = new float [frame];
         for (int i = 1; i <= frame; i++)
         {
-            //Ã¿Ö¡µÄÆ½¾ùÖµ
+            //æ¯å¸§çš„å¹³å‡å€¼
             float delta = (float)i / frame;
-            //Ã¿Ö¡µÄ²îÖµ
+            //æ¯å¸§çš„å·®å€¼
             float value = animationCurve.Evaluate(delta);
 
             //Debug.Log(delta+" "+value);
 
-            //±£´æ¼ÓËÙ¶È
+            //ä¿å­˜åŠ é€Ÿåº¦
             accelerate[i-1] = value;
 
             //Debug.Log( accelerate[i - 1]);
         }
 
-        //¼ÓËÙ¶È×ÜÖµ
+        //åŠ é€Ÿåº¦æ€»å€¼
         float count = 0;
         for (int i = 0; i < frame; i++)
         {
@@ -39,16 +39,16 @@ public class Curves : MonoBehaviour
         }
         //Debug.Log("count " + count);
 
-        //¾àÀëÆ½¾ùÖµ
+        //è·ç¦»å¹³å‡å€¼
         float average = distance/count;
 
         //Debug.Log("accelerate " + accelerate);
 
-        //×îÖÕ½á¹û
+        //æœ€ç»ˆç»“æœ
         float sum = 0;
         for (int i = 0; i < frame; i++)
         {
-            //¾àÀëÔö¼ÓÖµ
+            //è·ç¦»å¢åŠ å€¼
             float speed =  accelerate[i]* average;
             //Debug.Log(add);
             sum += speed;
