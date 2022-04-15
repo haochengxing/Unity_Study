@@ -13,13 +13,43 @@ Shader "Unlit/Diffuse"
         Tags { "RenderType"="Opaque" }
         LOD 100
 
+		Pass{
+			ZWrite On//开启深度写入
+			ColorMask 0//关闭颜色输出
+			CGPROGRAM
+			struct a2v
+			{
+				float4 vertex : POSITION;
+			};
+			struct v2f
+			{
+				float4 pos : SV_POSITION;
+			};
+			v2f vert(a2v v)
+			{
+				v2f o;
+				o.pos = UnityObjectToClipPos(v.vertex);
+				return o;
+			}
+			fixed4 frag(v2f i) : SV_Target
+			{
+				return fixed4(1.0,1.0,1.0, 1.0);
+			}
+			#pragma vertex vert
+			#pragma fragment frag	
+			ENDCG
+		}
+
         Pass
         {
             //定义Tags
 			Tags{ "RenderType" = "Opaque" }
 
-			ZWrite On
-			ZTest Less
+			ZWrite Off//关闭深度写入
+			ZTest Equal//深度相等为通过
+
+			//ZWrite On
+			//ZTest Less
 			//ZTest Always
  
 			CGPROGRAM
