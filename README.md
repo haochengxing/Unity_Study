@@ -17,5 +17,13 @@ GPU中运用了Early-Z的技术，在Vertex阶段和Fragment阶段之间（光�
 
 https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/02%20Stencil%20testing/
 
+混合
 
+最终颜色=源颜色向量X源因子值+目标颜色向量X目标因子值
+Blend SrcAlpha OneMinusSrcAlpha
+源因子值0.6
+目标因子值1-0.6=0.4
+C=(0,1,0,0.6)*0.6+(1,0,0,1)*(1-0.6)
+
+https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/03%20Blending/
 
