@@ -51,3 +51,7 @@ https://blog.csdn.net/eevee_1/article/details/118632398
 
 https://www.jianshu.com/p/42c24309f299
 
+Blinn-Phong
+
+https://learnopengl-cn.github.io/05%20Advanced%20Lighting/01%20Advanced%20Lighting/
+
