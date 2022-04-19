@@ -31,7 +31,6 @@ https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/03%20Blending/
 
 https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/05%20Framebuffers/
 
-
 天空盒反射和折射
 
 https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/06%20Cubemaps/
@@ -39,4 +38,8 @@ https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/06%20Cubemaps/
 几何着色器
 
 https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/09%20Geometry%20Shader/
+
+gpuinstance
+
+https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/10%20Instancing/
 
