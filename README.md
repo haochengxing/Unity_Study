@@ -36,3 +36,7 @@ https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/05%20Framebuffers/
 
 https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/06%20Cubemaps/
 
+几何着色器
+
+https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/09%20Geometry%20Shader/
+
