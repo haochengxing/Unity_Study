@@ -43,3 +43,11 @@ gpuinstance
 
 https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/10%20Instancing/
 
+抗锯齿
+
+https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/11%20Anti%20Aliasing/
+
+https://blog.csdn.net/eevee_1/article/details/118632398
+
+https://www.jianshu.com/p/42c24309f299
+
