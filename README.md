@@ -27,10 +27,12 @@ C=(0,1,0,0.6)*0.6+(1,0,0,1)*(1-0.6)
 
 https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/03%20Blending/
 
-
 后处理
 
 https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/05%20Framebuffers/
 
 
+天空盒反射和折射
+
+https://learnopengl-cn.github.io/04%20Advanced%20OpenGL/06%20Cubemaps/
 
