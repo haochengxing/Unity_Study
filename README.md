@@ -63,3 +63,31 @@ shadowmap
 
 https://zhuanlan.zhihu.com/p/30799329
 
+
+exp(x) 计算ex 的值，e= 2.71828182845904523536
+exp2(x) 计算2x 的值
+log(x) 计算ln(x)的值，x 必须大于 0
+log2(x) 计算log(2x) 的值，x 必须大于 0
+log10(x) 计算log10(x) 的值，x 必须大于 0
+
+https://zhuanlan.zhihu.com/p/382202359
+
+https://zhuanlan.zhihu.com/p/454970727
+
+距离平方成反比贡献度的算法，比平均贡献好些。
+
+exp（-80*d)*exp(80*z)=exp(-80*(d-z));
+
+RenderTextureFormat
+
+https://docs.unity3d.com/ScriptReference/RenderTextureFormat.html
+
+RenderTextureReadWrite
+
+https://docs.unity3d.com/ScriptReference/RenderTextureReadWrite.html
+
+float:最高精度的浮点值，32为存储
+half：中等精度，16位存储
+fixed：最低精度，11位存储
+
+
