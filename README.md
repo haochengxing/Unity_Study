@@ -156,6 +156,75 @@ https://blog.csdn.net/u011105442/article/details/112391799
 https://www.bilibili.com/read/cv15063861
 
 
+通过DecodeLightmap函数将采样得到贴图颜色解码为实际的数值在shader中计算
+// decodeInstructions is a internal constant value unity_Lightmap_HDR
+inline half3 DecodeLightmap( fixed4 color, half4 decodeInstructions)
+{
+#if defined(UNITY_LIGHTMAP_DLDR_ENCODING)
+    return DecodeLightmapDoubleLDR(color, decodeInstructions);
+#elif defined(UNITY_LIGHTMAP_RGBM_ENCODING)
+    return DecodeLightmapRGBM(color, decodeInstructions);
+#else //defined(UNITY_LIGHTMAP_FULL_HDR)
+    return color.rgb;
+#endif
+}
+
+对于RGBM 编码格式又根据Color Space的不同分为三种
+// decodeInstructions is a internal constant value unity_Lightmap_HDR
+inline half3 DecodeLightmapRGBM (half4 data, half4 decodeInstructions)
+{
+    // If Linear mode is not supported we can skip exponent part
+    #if defined(UNITY_COLORSPACE_GAMMA)
+    # if defined(UNITY_FORCE_LINEAR_READ_FOR_RGBM)
+        return (decodeInstructions.x * data.a) * sqrt(data.rgb);
+    # else
+        return (decodeInstructions.x * data.a) * data.rgb;
+    # endif
+    #else
+        return (decodeInstructions.x * pow(data.a, decodeInstructions.y)) * data.rgb;
+    #endif
+}
+
+dLDR处理比较简单
+inline half3 DecodeLightmapDoubleLDR( fixed4 color, half4 decodeInstructions)
+{
+    // decodeInstructions.x contains 2.0 when gamma color space is used or pow(2.0, 2.2) = 4.59 when linear color space is used on mobile platforms
+    return decodeInstructions.x * color.rgb;
+}
+
+1 RGBM : 一个像素颜色Color由两部分组成 颜色（RGB通道）和一个乘积系数M（A通道），在线性空间linear里，Color的每一个分量的值的范围为 0到34.49(5的2.2次方)，在gamma空间，范围为0到5
+
+2 dLDR ： 在移动平台上dLDR编码将范围0到2，压缩为0到1，在shader中使用的时候，采样的像素颜色分量将转化到0到2，方法是将分量值乘以 2（gamma）或者 2的2.2次方（linear）所以可以知道压缩的办法是将分量值除以2（gamma）或者 2的2.2次方（linear）
+
+https://zhuanlan.zhihu.com/p/371900093
+
+法线贴图
+
+https://learnopengl-cn.github.io/05%20Advanced%20Lighting/04%20Normal%20Mapping/
+
+https://blog.csdn.net/u014078887/article/details/117677038
+
+inline fixed3 UnpackNormal(fixed4 packednormal)
+{
+#if defined(UNITY_NO_DXT5nm)
+    return packednormal.xyz * 2 - 1;
+#else
+    return UnpackNormalmapRGorAG(packednormal);
+#endif
+}
+
+fixed3 UnpackNormalmapRGorAG(fixed4 packednormal)
+{
+    // This do the trick
+   packednormal.x *= packednormal.w;
+
+    fixed3 normal;
+    normal.xy = packednormal.xy * 2 - 1;
+    normal.z = sqrt(1 - saturate(dot(normal.xy, normal.xy)));
+    return normal;
+}
+
+
 
 
 
