@@ -126,3 +126,29 @@ Camera.CalculateFrustumCorners
 
 Vector3.Magnitude
 返回向量的长度，也就是点目标点(x,y,z)到原点(0,0,0)的距离。
+
+利用GPU实现大规模动画角色的渲染
+ 
+https://www.cnblogs.com/guaishoudashu/p/9927604.html
+
+fmod(x,y)	返回x/y的余数。如果y为0，结果不可预料。
+
+顶点 ID：SV_VertexID
+顶点着色器可以接收具有“顶点编号”（为无符号整数）的变量。当您想要从纹理或 ComputeBuffers 中 获取额外的每顶点数据时，这非常有用。
+此功能从 DX10（着色器模型 4.0）和 GLCore/OpenGL ES 3 开始才存在，因此着色器需要具有 #pragma target 3.5 编译指令。
+
+Mathf.NextPowerOfTwo 最接近的二次方
+
+AnimationState 控制动画混合 播放动画时,AnimationState允许你修改速度，权值，时间和层
+
+Mathf .ClosestPowerOfTwo返回两个值的最接近的幂
+
+https://docs.unity3d.com/ScriptReference/TextureFormat.html
+
+利用GPU实现大规模动画角色的渲染
+ 
+https://www.cnblogs.com/guaishoudashu/p/9927604.html
+
+
+
+
