@@ -149,6 +149,13 @@ https://docs.unity3d.com/ScriptReference/TextureFormat.html
  
 https://www.cnblogs.com/guaishoudashu/p/9927604.html
 
+烘培光照贴图
+
+https://blog.csdn.net/u011105442/article/details/112391799
+
+https://www.bilibili.com/read/cv15063861
+
+
 
 
 
