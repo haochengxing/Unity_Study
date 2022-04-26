@@ -224,7 +224,16 @@ fixed3 UnpackNormalmapRGorAG(fixed4 packednormal)
     return normal;
 }
 
+https://blog.csdn.net/fjjaylz/article/details/110775812
 
+顶点着色器里的值被传入片元着色器时会被进行一次插值计算
+
+https://blog.csdn.net/u014078887/article/details/117677038
+
+为什么使用切线空间下的法线纹理
+
+自由度更高，当一张纹理可以用在不同的模型上时，可以只使用一套法线纹理，但是模型空间下，必须对每一个模型都创建一套对应的法线纹理
+可压缩，切线空间下法线纹理的z方向总是正方向，因此我们可以通过xy轴进行点积，之后开平方求出z轴的方向。每个像素只需要存储两个分量。
 
 
 
