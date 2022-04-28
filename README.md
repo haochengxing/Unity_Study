@@ -235,5 +235,42 @@ https://blog.csdn.net/u014078887/article/details/117677038
 自由度更高，当一张纹理可以用在不同的模型上时，可以只使用一套法线纹理，但是模型空间下，必须对每一个模型都创建一套对应的法线纹理
 可压缩，切线空间下法线纹理的z方向总是正方向，因此我们可以通过xy轴进行点积，之后开平方求出z轴的方向。每个像素只需要存储两个分量。
 
+视差贴图
+
+https://learnopengl-cn.github.io/05%20Advanced%20Lighting/05%20Parallax%20Mapping/
+
+
+// Declares 3x3 matrix 'rotation', filled with tangent space basis
+#define TANGENT_SPACE_ROTATION \
+    float3 binormal = cross( normalize(v.normal), normalize(v.tangent.xyz) ) * v.tangent.w; \
+    float3x3 rotation = float3x3( v.tangent.xyz, binormal, v.normal )
+
+// Computes object space light direction
+inline float3 ObjSpaceLightDir( in float4 v )
+{
+    float3 objSpaceLightPos = mul(unity_WorldToObject, _WorldSpaceLightPos0).xyz;
+    #ifndef USING_LIGHT_MULTI_COMPILE
+        return objSpaceLightPos.xyz - v.xyz * _WorldSpaceLightPos0.w;
+    #else
+        #ifndef USING_DIRECTIONAL_LIGHT
+        return objSpaceLightPos.xyz - v.xyz;
+        #else
+        return objSpaceLightPos.xyz;
+        #endif
+    #endif
+}
+
+// Computes object space view direction
+inline float3 ObjSpaceViewDir( in float4 v )
+{
+    float3 objSpaceCameraPos = mul(unity_WorldToObject, float4(_WorldSpaceCameraPos.xyz, 1)).xyz;
+    return objSpaceCameraPos - v.xyz;
+}
+
+
+https://www.jianshu.com/p/fea6c9fc610f
+
+
+
 
 
