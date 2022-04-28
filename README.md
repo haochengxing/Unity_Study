@@ -267,8 +267,29 @@ inline float3 ObjSpaceViewDir( in float4 v )
     return objSpaceCameraPos - v.xyz;
 }
 
-
 https://www.jianshu.com/p/fea6c9fc610f
+
+HDR
+
+https://learnopengl-cn.github.io/05%20Advanced%20Lighting/06%20HDR/
+
+http://www.u3d8.com/?p=2560
+
+在高强度区域不会丢失颜色
+
+泛光 bloom
+
+https://learnopengl-cn.github.io/05%20Advanced%20Lighting/07%20Bloom/
+
+亮度
+float Luminance( vec3 c )
+{
+    return dot( c, vec3(0.22, 0.707, 0.071) );
+}
+
+首先提取一张图像的亮度，进行模糊之后(高斯模糊或者其他模糊方法)，覆盖到原图上。
+因此需要好几个pass来实现，一个pass提取亮度，两个pass进行高斯模糊，最后一个pass混合两张图。
+
 
 
 
