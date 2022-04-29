@@ -290,6 +290,17 @@ float Luminance( vec3 c )
 首先提取一张图像的亮度，进行模糊之后(高斯模糊或者其他模糊方法)，覆盖到原图上。
 因此需要好几个pass来实现，一个pass提取亮度，两个pass进行高斯模糊，最后一个pass混合两张图。
 
+安卓和iOS拉起键盘，判断键盘done状态
+
+https://zhuanlan.zhihu.com/p/371161112
+
+
+延迟着色法
+
+https://learnopengl-cn.github.io/05%20Advanced%20Lighting/08%20Deferred%20Shading/
+
+
+
 
 
 
