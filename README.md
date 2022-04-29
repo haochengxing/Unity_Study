@@ -317,6 +317,10 @@ namespace TMPro
     }
 }
 
+emoji表情大全
+
+https://raw.githubusercontent.com/amio/emoji.json/master/emoji.json
+
 延迟着色法
 
 https://learnopengl-cn.github.io/05%20Advanced%20Lighting/08%20Deferred%20Shading/
