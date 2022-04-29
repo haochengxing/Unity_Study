@@ -294,6 +294,28 @@ float Luminance( vec3 c )
 
 https://zhuanlan.zhihu.com/p/371161112
 
+修复Unity-iOS键盘无法输入Emoji 
+
+https://www.cnblogs.com/nickcan/p/15797746.html
+
+namespace TMPro
+{
+    public class TMP_PostBuildProcessHandler
+    {
+        [PostProcessBuildAttribute(10000)]
+        public static void OnPostprocessBuild(BuildTarget target, string pathToBuiltProject)
+        {
+            if (target == BuildTarget.iOS)
+            {
+
+                string file = Path.Combine(pathToBuiltProject, "Classes/UI/Keyboard.mm");
+                string content = File.ReadAllText(file);
+                content = content.Replace("FILTER_EMOJIS_IOS_KEYBOARD 1", "FILTER_EMOJIS_IOS_KEYBOARD 0");
+                File.WriteAllText(file, content);
+            }
+        }
+    }
+}
 
 延迟着色法
 
