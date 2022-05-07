@@ -325,9 +325,20 @@ https://raw.githubusercontent.com/amio/emoji.json/master/emoji.json
 
 https://learnopengl-cn.github.io/05%20Advanced%20Lighting/08%20Deferred%20Shading/
 
+SSAO 屏幕空间环境光遮蔽
 
+https://learnopengl-cn.github.io/05%20Advanced%20Lighting/09%20SSAO/
 
+https://blog.csdn.net/puppet_master/article/details/82929708
 
+inline void DecodeDepthNormal( float4 enc,out float depth,float3 normal){
+depth=DecodeFloatRG(enc.zw);
+normal=DecodeViewNormalStereo(enc);
+}
+
+调用DecodeFloatRG和DecodeViewNormalStereo来解码深度+法线纹理中的深度和法线信息。
+
+Bias 偏移
 
 
 
