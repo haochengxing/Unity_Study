@@ -340,6 +340,15 @@ normal=DecodeViewNormalStereo(enc);
 
 Bias 偏移
 
+PBR
+
+https://learnopengl-cn.github.io/07%20PBR/01%20Theory/
+
+sRGB
+
+现实世界的颜色是线性的，相机上显示的图像和现实一样，又知道显示器会对图形多gamma2.2，那么相机在保存图片的时候肯定不能以线性保存，不然打开图片查看的时候会被gamma2.2，看起来会变暗。所以我们要把图片保存的时候进行gamma0.45，也就是保存在标准sRGB色彩空间，也就是进行gamma校正。那么在打开图片就是线性的了。
+
+mix(x, y, a): x, y的线性混叠， x(1-a) + y*a;
 
 
 
